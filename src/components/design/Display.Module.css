@@ -1,0 +1,47 @@
+.designTshirt{
+    display: flex;
+    justify-content: center;
+}
+.imgTshirt{
+    position: relative;
+    width: 80%
+}
+.imgTshirt img{
+    width: 100%;
+}
+
+.shadowTshirt{
+    position: absolute;
+    top: 0;
+    width: 80%;
+    z-index: 99;
+}
+.shadowTshirt img{
+    width: 100%;
+}
+.designItems{
+    position: absolute;
+    top: 25%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.designItems img{
+    width: 100%;
+}
+.designItems p{
+    margin: 0;
+}
+
+.text1{
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+}
+.text2{
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+
+}
