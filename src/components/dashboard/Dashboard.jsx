@@ -9,7 +9,7 @@ const Dashboard = () => {
         <Col span={12} offset={2}>
             <Display/>
         </Col>
-        <Col span={6} offset={2}>
+        <Col span={6} offset={1}>
             <Setting/>
         </Col>
     </Row>

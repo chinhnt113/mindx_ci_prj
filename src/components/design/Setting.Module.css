@@ -1,0 +1,25 @@
+.setting{
+    border: 1px solid #000;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,.25);
+}
+
+.setting > * {
+    margin-bottom: 20px;
+}
+
+.settingLabel{
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 100%;
+}
+
+.color label{
+    width: 50px;
+    height: 50px;
+}
+
+.fontSlider{
+    margin: 10px 0 0;
+}

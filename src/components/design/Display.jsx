@@ -14,18 +14,25 @@ import RedShirt from "../../asset/img/red.png";
 import TurquoiseShirt from "../../asset/img/turquoise.png";
 import WhiteShirt from "../../asset/img/white.png";
 import YellowShirt from "../../asset/img/yellow.png";
+// eslint-disable-next-line
 import Shadow1 from "../../asset/img/shadow1.png";
-import Shadow2 from "../../asset/img/shadow2.png";
+// eslint-disable-next-line
+import Shadow25 from "../../asset/img/shadow25.png";
+// eslint-disable-next-line
+import Shadow33 from "../../asset/img/shadow33.png";
 
 const Display = () => {
   const { design } = useContext(DesignContext);
-  const { shirtColor, text1, text2, url } = design;
+  const { shirtColor, text1, text2, text1Color, text2Color, textSize, url } = design;
 
   let displayColor = BlackShirt;
 
   switch (shirtColor) {
     case "black":
       displayColor = BlackShirt;
+      break;
+    case "green":
+      displayColor = GreenShirt;
       break;
     case "blue":
       displayColor = BlueShirt;
@@ -64,19 +71,22 @@ const Display = () => {
 
   return (
     <Row className="designTshirt">
-      <div className="shadowTshirt">
-        <img src={Shadow1} alt="tshirt-shadow" />
+      <div className="shadowTshirt upperShadow">
+        <img src={Shadow33} alt="tshirt-shadow" />
+      </div>
+      <div className="shadowTshirt underShadow">
+        <img src={Shadow25} alt="tshirt-shadow" />
       </div>
       <div className="imgTshirt">
         <img src={displayColor} alt="tshirt-only" />
       </div>
-      <div className="designItems">
+      <div className="designItems" style={{fontSize:`${textSize}px`}}>
         <div className="text1">
-          <p>{text1}</p>
+          <p style={{color:`${text1Color}`}}>{text1}</p>
         </div>
         <img src={url} alt="logoimg" />
         <div className="text2">
-          <p>{text2}</p>
+          <p style={{color:`${text2Color}`}}>{text2}</p>
         </div>
       </div>
     </Row>

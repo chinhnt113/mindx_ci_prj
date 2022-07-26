@@ -6,10 +6,13 @@ export const DesignContext = createContext();
 const DesignContextProvider = ({ children }) => {
   // State
   const [design, setDesign] = useState({
-    shirtColor: "pink",
+    shirtColor: "turquoise",
     url: "https://upload.wikimedia.org/wikipedia/commons/5/53/Wikimedia-logo.png",
-    text1: "Hello",
-    text2: "World",
+    text1: "140cm",
+    text1Color: "#888",
+    text2: "110cm",
+    text2Color: "#888",
+    textSize: 20
   });
 
   // handle change design
@@ -37,6 +40,24 @@ const DesignContextProvider = ({ children }) => {
       text2: text2,
     });
   };
+  const changeText1Color = (text1Color) => {
+    setDesign({
+      ...design,
+      text1Color: text1Color,
+    });
+  };
+  const changeText2Color = (text2Color) => {
+    setDesign({
+      ...design,
+      text2Color: text2Color,
+    });
+  };
+  const changeTextSize = (textSize) => {
+    setDesign({
+      ...design,
+      textSize: textSize,
+    });
+  };
 
   // context data
   const designContextData = {
@@ -44,7 +65,10 @@ const DesignContextProvider = ({ children }) => {
     changeshirtColor,
     changeUrl,
     changeText1,
-    changeText2
+    changeText2,
+    changeText1Color,
+    changeText2Color,
+    changeTextSize
   };
 
   // return provider
