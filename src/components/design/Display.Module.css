@@ -1,25 +1,32 @@
-.designTshirt {
+.designShirt {
   border: 1px solid #000;
   border-radius: 10px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
   display: flex;
   justify-content: center;
   background-color: #fff;
-}
-.imgTshirt {
   position: relative;
-  width: 80%;
+  overflow: hidden;
 }
-.imgTshirt img {
+.imgShirt {
+  position: relative;
+  width: 100%;
+}
+.imgShirtString {
+  position: absolute;
+  z-index: 99 !important;
+}
+.imgShirt img,
+.imgShirtString img {
   width: 100%;
 }
 
-.shadowTshirt {
+.shadowShirt {
   position: absolute;
   top: 0;
-  width: 80%;
+  width: 100%;
 }
-.shadowTshirt img {
+.shadowShirt img {
   width: 100%;
 }
 .upperShadow {
@@ -34,7 +41,7 @@
   z-index: 75;
   top: 25%;
   width: 30%;
-  max-height: 50%;
+  height: 55%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -43,8 +50,11 @@
 }
 .designItems img {
   width: 100%;
+  opacity: .95;
 }
 .designItems p {
+  display: inline-block;
+  opacity: .95;
   margin: 0;
 }
 

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { getDownloadURL, ref, uploadBytesResumable } from "@firebase/storage";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
-import { Input, Radio, Row, message, Upload, Col, Slider } from "antd";
+import { Input, Radio, Row, message, Upload, Col, Slider, Switch } from "antd";
 import { DesignContext } from "../../context/DesignContext";
 import { storage } from "../../config/firebaseConfig";
 
@@ -24,39 +24,24 @@ const beforeUpload = (file) => {
 };
 
 const Setting = () => {
-  const {
-    changeshirtColor,
-    changeUrl,
-    changeText1,
-    changeText2,
-    changeText1Color,
-    changeText2Color,
-    changeTextSize,
-    design,
-  } = useContext(DesignContext);
+  const { changeDesign, design } = useContext(DesignContext);
 
-  const handleChangeColor = (event) => {
-    console.log(event.target.value);
-    changeshirtColor(event.target.value);
-  };
-
-  const handleChangeText1 = (event) => {
-    changeText1(event.target.value);
-  };
-  const handleChangeText2 = (event) => {
-    changeText2(event.target.value);
-  };
-  const handleChangeText1Color = (event) => {
-    changeText1Color(event.target.value);
-  };
-  const handleChangeText2Color = (event) => {
-    changeText2Color(event.target.value);
+  // handle change shirt color, text, text color.
+  const onChangeInput = (e) => {
+    changeDesign(e.target.value, e.target.name);
   };
   const handleChangeTextSize = (value) => {
-    changeTextSize(value/2);
+    changeDesign(value / 2, "textSize");
+  };
+  const handleChangeImgSize = (value) => {
+    changeDesign(value / 100 + 0.5, "imgScale");
+  };
+  const handleSwitchType = (checked) => {
+    console.log(checked);
+    changeDesign(checked, "isTee");
   };
 
-  const fontFormatter = (value) => `${value/2}px`;
+  const fontFormatter = (value) => `${value / 2}px`;
 
   const [loading, setLoading] = useState(false);
 
@@ -71,7 +56,9 @@ const Setting = () => {
       },
       (error) => console.log(error),
       () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((url) => changeUrl(url));
+        getDownloadURL(uploadTask.snapshot.ref).then((url) =>
+          changeDesign(url, "url")
+        );
         setLoading(false);
       }
     );
@@ -93,11 +80,29 @@ const Setting = () => {
   return (
     <div className="setting">
       <Row className="settingLabel">Setting</Row>
+      {/* type */}
+      <Row>
+        <Col span={6}>Chọn kiểu áo</Col>
+        <Col span={12}>
+          <Switch
+            name="type"
+            checkedChildren="T-Shirt"
+            unCheckedChildren="Hoodie"
+            defaultChecked
+            onChange={handleSwitchType}
+          />
+        </Col>
+      </Row>
+
       {/* color */}
       <Row className="color">
         <Row>Chọn màu áo</Row>
-        <Radio.Group onChange={handleChangeColor}>
-          <Row gutter={[8, 8]} justify="space-between" style={{overflow: 'hidden'}}>
+        <Radio.Group name="shirtColor" onChange={onChangeInput}>
+          <Row
+            gutter={[8, 8]}
+            justify="space-between"
+            style={{ overflow: "hidden" }}
+          >
             <Col span={4}>
               <Radio.Button
                 value="black"
@@ -180,32 +185,36 @@ const Setting = () => {
         <Col span={16}>
           Nhập chữ hàng trên
           <Input
+            name="text1"
             placeholder="Điền chữ bên trên"
-            onChange={handleChangeText1}
+            onChange={onChangeInput}
             value={design.text1}
           ></Input>
         </Col>
         <Col span={7} offset={1}>
           Màu chữ
           <Input
+            name="text1Color"
             placeholder="Điền mã màu"
-            onChange={handleChangeText1Color}
+            onChange={onChangeInput}
             value={design.text1Color}
           ></Input>
         </Col>
         <Col span={16}>
           Nhập chữ hàng dưới
           <Input
+            name="text2"
             placeholder="Điền chữ bên dưới"
-            onChange={handleChangeText2}
+            onChange={onChangeInput}
             value={design.text2}
           ></Input>
         </Col>
         <Col span={7} offset={1}>
           Màu chữ
           <Input
+            name="text2Color"
             placeholder="Điền mã màu"
-            onChange={handleChangeText2Color}
+            onChange={onChangeInput}
             value={design.text2Color}
           ></Input>
         </Col>
@@ -215,6 +224,7 @@ const Setting = () => {
       <div>
         <Row>Điều chỉnh font chữ</Row>
         <Slider
+          name="textSize"
           className="fontSlider"
           onChange={handleChangeTextSize}
           defaultValue={40}
@@ -226,9 +236,9 @@ const Setting = () => {
       <Row>
         Tải ảnh của bạn lên
         <Upload
-          name="avatar"
+          name="image"
           listType="picture-card"
-          className="avatar-uploader"
+          className="image-uploader"
           showUploadList={false}
           action={handleChangeImage}
           beforeUpload={beforeUpload}
@@ -236,6 +246,12 @@ const Setting = () => {
           {uploadButton}
         </Upload>
       </Row>
+      <Slider
+        name="imgScale"
+        className="fontSlider"
+        onChange={handleChangeImgSize}
+        defaultValue={50}
+      />
     </div>
   );
 };
