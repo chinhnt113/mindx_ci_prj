@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-import BlackShirt from "../asset/img/black.png";
 
 export const DesignContext = createContext();
 
@@ -7,7 +6,7 @@ const DesignContextProvider = ({ children }) => {
   // State
   const [design, setDesign] = useState({
     shirtColor: "turquoise",
-    url: "https://upload.wikimedia.org/wikipedia/commons/5/53/Wikimedia-logo.png",
+    url: "https://letsdesign.co.il/wp-content/uploads/2018/05/let-s-design-logo-dskt-footer.svg",
     text1: "140cm",
     text1Color: "#888",
     text2: "110cm",

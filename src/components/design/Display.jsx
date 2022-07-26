@@ -23,7 +23,8 @@ import Shadow33 from "../../asset/img/shadow33.png";
 
 const Display = () => {
   const { design } = useContext(DesignContext);
-  const { shirtColor, text1, text2, text1Color, text2Color, textSize, url } = design;
+  const { shirtColor, text1, text2, text1Color, text2Color, textSize, url } =
+    design;
 
   let displayColor = BlackShirt;
 
@@ -71,22 +72,32 @@ const Display = () => {
 
   return (
     <Row className="designTshirt">
-      <div className="shadowTshirt upperShadow">
-        <img src={Shadow33} alt="tshirt-shadow" />
-      </div>
-      <div className="shadowTshirt underShadow">
-        <img src={Shadow25} alt="tshirt-shadow" />
-      </div>
+      {shirtColor === "white" ? (
+        <div className="shadowTshirt upperShadow">
+          <img src={Shadow1} alt="tshirt-shadow" />
+        </div>
+      ) : (
+        <>
+          <div className="shadowTshirt upperShadow">
+            <img src={Shadow33} alt="tshirt-shadow" />
+          </div>
+          <div className="shadowTshirt underShadow">
+            <img src={Shadow25} alt="tshirt-shadow" />
+          </div>
+        </>
+      )}
+
       <div className="imgTshirt">
         <img src={displayColor} alt="tshirt-only" />
       </div>
-      <div className="designItems" style={{fontSize:`${textSize}px`}}>
+      <div className="designItems" style={{ fontSize: `${textSize}px` }}>
         <div className="text1">
-          <p style={{color:`${text1Color}`}}>{text1}</p>
+          <p style={{ color: `${text1Color}` }}>{text1}</p>
         </div>
+        {/* {url === "" ? <img src={Logo} alt="logoimg" /> : <img src={url} alt="logoimg" />} */}
         <img src={url} alt="logoimg" />
         <div className="text2">
-          <p style={{color:`${text2Color}`}}>{text2}</p>
+          <p style={{ color: `${text2Color}` }}>{text2}</p>
         </div>
       </div>
     </Row>

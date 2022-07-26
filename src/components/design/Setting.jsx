@@ -97,7 +97,7 @@ const Setting = () => {
       <Row className="color">
         <Row>Chọn màu áo</Row>
         <Radio.Group onChange={handleChangeColor}>
-          <Row gutter={[8, 8]} justify="space-between">
+          <Row gutter={[8, 8]} justify="space-between" style={{overflow: 'hidden'}}>
             <Col span={4}>
               <Radio.Button
                 value="black"
