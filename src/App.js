@@ -12,8 +12,8 @@ function App() {
       <DesignContextProvider>
         <Layout>
           <Navbar />
-          <Content style={{ padding: "50px" }}>
-            <Dashboard />
+          <Content style={{ padding: "50px 0", backgroundImage: `url("https://www.engineroom.org.uk/images/archive/art.jpg")` }}>
+            <Dashboard className="dashboard"/>
           </Content>
         </Layout>
       </DesignContextProvider>

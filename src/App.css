@@ -1,3 +1,9 @@
 @import '~antd/dist/antd.css';
 
+.App{
+    background-image: url("https://www.engineroom.org.uk/images/archive/art.jpg");
+}
 
+.dashboard{
+    max-width: 1170px;
+}

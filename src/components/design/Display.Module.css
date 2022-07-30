@@ -39,9 +39,6 @@
 .designItems {
   position: absolute;
   z-index: 75;
-  top: 25%;
-  width: 30%;
-  height: 55%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -49,12 +46,11 @@
   justify-content: center;
 }
 .designItems img {
-  width: 100%;
-  opacity: .95;
+  /* opacity: .95; */
 }
 .designItems p {
   display: inline-block;
-  opacity: .95;
+  /* opacity: .95; */
   margin: 0;
 }
 
