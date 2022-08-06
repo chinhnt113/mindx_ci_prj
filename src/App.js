@@ -13,7 +13,10 @@ function App() {
         <Navbar />
         <Content
           style={{
+            display: "flex",
             padding: "50px 0",
+            justifyContent: "center",
+            alignItems: "center"
           }}
         >
           <Dashboard />
