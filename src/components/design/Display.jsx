@@ -1,8 +1,7 @@
 import { Row } from "antd";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import "./Display.Module.css";
 import { DesignContext } from "../../context/DesignContext";
-// import ShirtImg from "./ShirtImg";
 import {
   ShirtImg,
   designItemsStyleTee,
@@ -107,57 +106,105 @@ const Display = () => {
       break;
   }
 
+  // dragging
+  const designImg = useRef();
+  const designText1 = useRef();
+  const designText2 = useRef();
+  useEffect(() => {
+    dragElement(designImg.current)
+    dragElement(designText1.current)
+    dragElement(designText2.current)
+  }, [])
+
+  function dragElement(elmnt) {
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    console.log(elmnt);
+      
+    elmnt.onmousedown = dragMouseDown;
+    function dragMouseDown(e) {
+      e = e || window.event;
+      e.preventDefault();
+      // get the mouse cursor position at startup:
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      document.onmouseup = closeDragElement;
+      // call a function whenever the cursor moves:
+      document.onmousemove = elementDrag;
+    }
+  
+    function elementDrag(e) {
+      e = e || window.event;
+      e.preventDefault();
+      // calculate the new cursor position:
+      pos1 = pos3 - e.clientX;
+      pos2 = pos4 - e.clientY;
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      // set the element's new position:
+      elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+      elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    }
+  
+    function closeDragElement() {
+      // stop moving when mouse button is released:
+      document.onmouseup = null;
+      document.onmousemove = null;
+    }
+  }
+
   return (
     <Row className="designShirt">
-      {/* Áo trơn */}
-      {isTee ? (
-        <>
-          {shirtColor === "white" ? (
-            <div className="shadowShirt upperShadow">
-              <img src={ShirtImg.Shadow1} alt="tshirt-shadow" />
-            </div>
-          ) : (
-            <>
+      <div className="shirtContainer">
+        {/* Áo trơn */}
+        {isTee ? (
+          <>
+            {shirtColor === "white" ? (
               <div className="shadowShirt upperShadow">
-                <img src={ShirtImg.Shadow33} alt="tshirt-shadow" />
+                <img src={ShirtImg.Shadow1} alt="tshirt-shadow" />
               </div>
-              <div className="shadowShirt underShadow">
-                <img src={ShirtImg.Shadow25} alt="tshirt-shadow" />
-              </div>
-            </>
-          )}
-          <div className="imgShirt">
-            <img src={teeColor} alt="tshirt-only" />
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="shadowShirt upperShadow">
-            <img src={ShirtImg.ShadowHoodie} alt="hoodie-shadow" />
-          </div>
-          <div className="imgShirt">
-            <img src={hoodieColor} alt="hoodie-only" />
-          </div>
-          <div className="imgShirtString upperShadow">
-            <img src={hoodieColorString} alt="hoodie-only" />
-          </div>
-        </>
-      )}
+            ) : (
+              <>
+                <div className="shadowShirt upperShadow">
+                  <img src={ShirtImg.Shadow33} alt="tshirt-shadow" />
+                </div>
+                <div className="shadowShirt underShadow">
+                  <img src={ShirtImg.Shadow25} alt="tshirt-shadow" />
+                </div>
+              </>
+            )}
+            <div className="imgShirt">
+              <img src={teeColor} alt="tshirt-only" />
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="shadowShirt upperShadow">
+              <img src={ShirtImg.ShadowHoodie} alt="hoodie-shadow" />
+            </div>
+            <div className="imgShirt">
+              <img src={hoodieColor} alt="hoodie-only" />
+            </div>
+            <div className="imgShirtString upperShadow">
+              <img src={hoodieColorString} alt="hoodie-only" />
+            </div>
+          </>
+        )}
 
-      {/* Các item */}
-      <div
-        className="designItems"
-        style={{ ...designItemsStyle, fontSize: `${textSize}px` }}
-      >
-        {/* Text trên */}
-        <div className="text1">
-          <p style={{ color: `${text1Color}` }}>{text1}</p>
-        </div>
-        {/* ảnh */}
-        <img src={url} alt="logoimg" style={{ width: `${imgScale}` }} />
-        {/* text dưới */}
-        <div className="text2">
-          <p style={{ color: `${text2Color}` }}>{text2}</p>
+        {/* Các item */}
+        <div
+          className="designItems"
+          style={{ ...designItemsStyle, fontSize: `${textSize}px` }}
+        >
+          {/* Text trên */}
+          <div className="text1" ref={designText1}>
+            <p style={{ color: `${text1Color}` }}>{text1}</p>
+          </div>
+          {/* ảnh */}
+          <img src={url} className="designImg" ref={designImg} alt="logoimg" style={{ width: `${imgScale}` }} />
+          {/* text dưới */}
+          <div className="text2" ref={designText2}>
+            <p style={{ color: `${text2Color}` }}>{text2}</p>
+          </div>
         </div>
       </div>
     </Row>

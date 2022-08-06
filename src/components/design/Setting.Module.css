@@ -29,17 +29,14 @@
 .fontSlider{
     margin: 10px 0 0;
 }
-
-.fontSlider{
-    
-}
 .btn-save{
     justify-self: center;
     color: #fff;
     background-color: #d63230;
     background-image: var(--gradient);
 }
-.btn-save:hover{
+.btn-save:hover,
+.btn-save:focus{
     background-color: #d63230;
     background-image: var(--gradient);
     background-clip: text;
@@ -47,4 +44,7 @@
     border: 1px solid;
     border-image-slice: 1;
     border-image-source: var(--gradient);
+}
+.btn-save:focus{
+    color: #f39237;
 }

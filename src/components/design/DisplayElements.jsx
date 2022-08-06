@@ -1,7 +1,7 @@
 export const designItemsStyleTee = {
-  top: "25%",
+  top: "27.5%",
   width: "30%",
-  height: "55%",
+  height: "50%",
 };
 
 export const designItemsStyleHoodie = {

@@ -4,9 +4,18 @@
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: #fff;
   position: relative;
   overflow: hidden;
+  height: 100%;
+}
+.shirtContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
 }
 .imgShirt {
   position: relative;
@@ -31,6 +40,7 @@
 }
 .upperShadow {
   z-index: 100;
+  pointer-events: none;
 }
 .underShadow {
   z-index: 50;
@@ -44,17 +54,29 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  border: 2px dashed transparent;
+  outline: 2px dashed transparent;
 }
-.designItems img {
-  /* opacity: .95; */
+.designItems:active {
+  border: 2px dashed rgba(0, 0, 0, 0.25);
+  outline: 2px dashed rgba(255, 255, 255, 0.25);
+}
+.designImg,
+.text1,
+.text2 {
+  cursor: move;
+  position: absolute;
+  opacity: .95;
+  font-weight: 700;
+}
+.text1{
+  transform: translateY(-80px);
+}
+.text2{
+  transform: translateY(80px);
 }
 .designItems p {
   display: inline-block;
   /* opacity: .95; */
   margin: 0;
-}
-
-.text1,
-.text2 {
-  font-weight: 700;
 }

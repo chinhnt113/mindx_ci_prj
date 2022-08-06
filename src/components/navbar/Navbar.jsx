@@ -3,7 +3,9 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-    <Header>Navbar</Header>
+    <Header className="header">
+      <div>EVERYONE CAN DESIGN</div>
+    </Header>
   )
 }
 

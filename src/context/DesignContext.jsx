@@ -7,7 +7,7 @@ const DesignContextProvider = ({ children }) => {
   const [design, setDesign] = useState({
     isTee: true,
     shirtColor: "yellow",
-    url: "https://freepngimg.com/thumb/minions/110243-minion-photos-eyes-free-download-image.png",
+    url: "http://pngimg.com/uploads/minions/minions_PNG80.png",
     imgScale: "100%",
     text1: "Tulaliloo",
     text1Color: "#111111",

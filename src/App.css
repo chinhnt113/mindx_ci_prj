@@ -1,9 +1,31 @@
-@import '~antd/dist/antd.css';
+@import "~antd/dist/antd.css";
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Mouse+Memoirs&family=Open+Sans:wght@300;400;500;600;700;800&family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,700;0,800;1,300&family=Roboto:wght@300;400;500;700&display=swap");
 
-.App{
-    background-image: url("https://www.engineroom.org.uk/images/archive/art.jpg");
+.App {
+  background: url("https://www.engineroom.org.uk/images/archive/art.jpg") center /
+    cover no-repeat;
+  min-height: 100vh;
 }
 
-.dashboard{
-    max-width: 1170px;
+.header {
+  font-family: "Mouse Memoirs", sans-serif;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+}
+.header div {
+  background: -webkit-linear-gradient(
+    319deg,
+    #d63230 0%,
+    #f39237 37%,
+    #97cc04 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dashboard {
+  max-width: 1200px;
+  margin: auto;
+  height: calc(100vh-100px);
 }
