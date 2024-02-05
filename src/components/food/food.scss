@@ -1,0 +1,26 @@
+.food {
+  width: 90%;
+  display: flex;
+  
+  .ingredient {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  
+    > div {
+      flex: 1;
+      min-width: 18%;
+      max-width: 20%;
+      margin: 0 !important;
+  
+      input {
+        max-width: 70px;
+      }
+    }
+  }
+
+  .result {
+    
+  }
+}
